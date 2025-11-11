@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto JavaScript - Dashboard de Clima</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #00c6ff;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 198, 255, 0.4);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 198, 255, 0.6);
+        }
+
+        .temp {
+            font-size: 3em;
+            font-weight: bold;
+            color: #00c6ff;
+        }
+
+        .desc {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .botao {
+            background: #00c6ff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .botao:hover {
+            background: #009edb;
+        }
+
+        .info {
+            margin-top: 20px;
+            font-size: 1em;
+        }
+
+        footer {
+            margin-top: 40px;
+            color: #ccc;
+            font-size: 0.9em;
+        }
+
+        /* Animação suave de entrada */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            animation: fadeIn 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <h1>☀️ Dashboard de Clima</h1>
+
+    <div class="card" id="weatherCard">
+        <div class="temp" id="temp">--°C</div>
+        <div class="desc" id="desc">Carregando...</div>
+        <button class="botao" onclick="atualizarClima()">Atualizar</button>
+        <div class="info">
+            <p><strong>Cidade:</strong> <span id="cidade">São Paulo</span></p>
+            <p><strong>Umidade:</strong> <span id="umidade">--%</span></p>
+            <p><strong>Vento:</strong> <span id="vento">-- km/h</span></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Desenvolvido por Vanessa Corrêa 💙 com JavaScript puro</p>
+    </footer>
+
+    <script>
+        const dadosSimulados = [
+            { cidade: "São Paulo", temp: 26, desc: "Ensolarado ☀️", umidade: 45, vento: 8 },
+            { cidade: "Rio de Janeiro", temp: 30, desc: "Parcialmente nublado 🌤️", umidade: 60, vento: 12 },
+            { cidade: "Curitiba", temp: 18, desc: "Chuva leve 🌧️", umidade: 80, vento: 15 },
+            { cidade: "Manaus", temp: 32, desc: "Muito quente ☀️🔥", umidade: 70, vento: 5 },
+        ];
+
+        function atualizarClima() {
+            const random = Math.floor(Math.random() * dadosSimulados.length);
+            const clima = dadosSimulados[random];
+
+            document.getElementById('cidade').textContent = clima.cidade;
+            document.getElementById('temp').textContent = clima.temp + "°C";
+            document.getElementById('desc').textContent = clima.desc;
+            document.getElementById('umidade').textContent = clima.umidade + "%";
+            document.getElementById('vento').textContent = clima.vento + " km/h";
+
+            // Animação suave
+            const card = document.getElementById('weatherCard');
+            card.style.transform = "scale(0.95)";
+            setTimeout(() => {
+                card.style.transform = "scale(1)";
+            }, 150);
+        }
+
+        atualizarClima();
+    </script>
+</body>
+</html>
+
+
+

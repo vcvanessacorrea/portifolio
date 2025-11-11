@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto CSS — Efeitos Modernos</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      background: linear-gradient(-45deg, #0074D9, #00C3FF, #00BFA5, #4B0082);
+      background-size: 400% 400%;
+      animation: gradient 10s ease infinite;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+    }
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .card {
+      width: 220px;
+      height: 220px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(255,255,255,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 25px rgba(255,255,255,0.4);
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.3), transparent 70%);
+      top: -50%;
+      left: -50%;
+      transform: scale(0);
+      transition: transform 0.4s;
+    }
+    .card:hover::before {
+      transform: scale(1);
+    }
+    a {
+      margin-top: 40px;
+      text-decoration: none;
+      color: #fff;
+      background: rgba(0,0,0,0.4);
+      padding: 12px 25px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    a:hover { background: rgba(255,255,255,0.3); }
+  </style>
+</head>
+<body>
+  <i class="fab fa-css3-alt" style="font-size:60px;margin-bottom:10px;"></i>
+  <h1>CSS Criativo e Moderno</h1>
+
+  <div class="cards">
+    <div class="card"><i class="fas fa-paint-brush fa-2x"></i><p>Design</p></div>
+    <div class="card"><i class="fas fa-wave-square fa-2x"></i><p>Transições</p></div>
+    <div class="card"><i class="fas fa-bolt fa-2x"></i><p>Animações</p></div>
+  </div>
+
+  <a href="../index.html">⬅ Voltar ao Portfólio</a>
+</body>
+</html>
+
